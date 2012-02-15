@@ -35,8 +35,11 @@ tick.png: tick-09de3f730b3b6ef960450a506b0916a9.png
 warning.png: warning-ee259a750b41727f13760fc303269b9a.png
 administrator/application.js: administrator/application-e26abca28c84b3e2d2b7dd4cf480c702.js
 application.js: application-bdb3b6014f508af80da2b92cbf688c7d.js
+maintenance/jcarousellite1.0.1_min.js: maintenance/jcarousellite1.0.1_min-4aa88ecc51e2bf057e193e6715c568fe.js
+maintenance/jquery.countdown.js: maintenance/jquery.countdown-ac0cdf6d203c53532cdee1f18f17c38e.js
 administrator/application.css: administrator/application-1c9609bc58b1e77c196de29021583379.css
 application.css: application-59a1829eadbbb05cc3f06a2f9f88a846.css
+maintenance/style.css: maintenance/style-4aecdba7fe2e64b6b40db2aef9013bb3.css
 facebox/closelabel.png: facebox/closelabel-d3fcc37135b684a579abdf03e0f6719e.png
 facebox/loading.gif: facebox/loading-c77a8b7bfb4230ce5ee044c1a6392c99.gif
 web-app-theme/themes/activo/images/arrow.png: web-app-theme/themes/activo/images/arrow-b95360d1579bdff5e7f302ba9e1e892c.png
