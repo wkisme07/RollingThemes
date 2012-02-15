@@ -40,6 +40,7 @@ maintenance/jquery.countdown.js: maintenance/jquery.countdown-ac0cdf6d203c53532c
 administrator/application.css: administrator/application-1c9609bc58b1e77c196de29021583379.css
 application.css: application-59a1829eadbbb05cc3f06a2f9f88a846.css
 maintenance/style.css: maintenance/style-4aecdba7fe2e64b6b40db2aef9013bb3.css
+web_app_theme.css: web_app_theme-2ed5af3fbfce613ece474ba80fea7c08.css
 facebox/closelabel.png: facebox/closelabel-d3fcc37135b684a579abdf03e0f6719e.png
 facebox/loading.gif: facebox/loading-c77a8b7bfb4230ce5ee044c1a6392c99.gif
 web-app-theme/themes/activo/images/arrow.png: web-app-theme/themes/activo/images/arrow-b95360d1579bdff5e7f302ba9e1e892c.png
