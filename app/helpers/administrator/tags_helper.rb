@@ -1,0 +1,2 @@
+module Administrator::TagsHelper
+end

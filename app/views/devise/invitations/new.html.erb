@@ -1,0 +1,59 @@
+<div id="box">
+  <h1>Rolling Themes</h1>
+
+  <div id="block-login" class="block">
+    <h2>Send invitation</h2>
+
+    <div class="content login">
+      <div class="flash">
+        <% flash.each do |type, message| -%>
+          <div class="message <%= type %>">
+            <p><%= message %></p>
+          </div>
+        <% end %>
+      </div>
+
+      <%= form_for(resource, :as => resource_name, :url => invitation_path(resource_name), :html => {:method => :post, :class => 'form login' }) do |f| %>
+        <div class="flash">
+          <% unless resource.errors.blank? %>
+            <div class="message error">
+              <ul class="user-form-error">
+                <% resource.errors.full_messages.each do |error| %>
+                  <li><%= error %></li>
+                <% end %>
+              </ul>
+            </div>
+          <% end %>
+        </div>
+
+        <div class="group wat-cf">
+          <div class="left">
+            <%= f.label :email, :class => 'label right' %>
+          </div>
+          <div class="right">
+            <%= f.email_field :email, :class => 'text_field' %>
+          </div>
+        </div>
+
+        <div class="group navform wat-cf">
+          <div class="right">
+            <button type="submit" class="button">
+              <%= image_tag "tick.png", :alt => '-' %> Send an invitation
+            </button>
+          </div>
+        </div>
+
+        <div class="group navform wat-cf">
+          <div class="right">
+            <%= link_to "Home", after_sign_in_path_for(resource_name) %>
+          </div>
+        </div>
+      <% end %>
+
+    </div>
+  </div>
+</div>
+
+<%= content_for :stylesheet do %>
+  <%= stylesheet_link_tag "web_app_theme" %>
+<% end %>

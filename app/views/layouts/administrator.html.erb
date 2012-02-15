@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Rolling Themes</title>
+  <%= stylesheet_link_tag    "application", "web_app_theme" %>
+  <%= javascript_include_tag "application" %>
+  <%= csrf_meta_tags %>
+  <%= yield :stylesheet %>
+</head>
+<body class="admin-site">
+  <div id="container">
+    <div id="header">
+      <h1><a href="/">Rolling Themes</a></h1>
+      <div id="user-navigation">
+        <ul class="wat-cf">
+          <li>You are logged in as "<%= link_to current_user.first_name, administrator_root_path, :class => 'email-link' %>"</li>
+          <li><%= link_to t("web-app-theme.settings", :default => "Settings"), account_setting_administrator_users_path %></li>
+          <li><%= link_to "Logout", destroy_user_session_path, :method => :delete, :class => 'logout' %></li>
+        </ul>
+      </div>
+      <div id="main-navigation">
+        <ul class="wat-cf">
+          <li class="<%= 'active' if controller_name == 'posts' %>">
+            <%= link_to "Posts", administrator_posts_path %>
+          </li>
+          <li class="first <%= 'active' if controller_name == 'authors' %>">
+            <%= link_to "Authors", administrator_authors_path %>
+          </li>
+          <li class="<%= 'active' if controller_name == 'categories' %>">
+            <%= link_to "Categories", administrator_categories_path %>
+          </li>
+          <li class="<%= 'active' if controller_name == 'tags' %>">
+            <%= link_to "Tags", administrator_tags_path %>
+          </li>
+          <li class="<%= 'active' if controller_name == 'users' %>">
+            <%= link_to "Users", administrator_users_path %>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <div id="wrapper" class="wat-cf">
+      <div class="flash">
+        <% flash.each do |type, message| -%>
+          <div class="message <%= type %>">
+            <p><%= message %></p>
+          </div>
+        <% end -%>
+      </div>
+
+      <div id="main">
+        <div class="block">
+          <%= yield %>
+        </div>
+
+        <div id="footer">
+          <div class="block">
+            <p>Copyright &copy; <%= Time.now.year %> Rolling Themes.</p>
+          </div>
+        </div>
+      </div>
+
+      <div id="sidebar">
+        <%= yield :sidebar %>
+      </div>
+    </div>
+  </div>
+
+  <%= yield :javascript %>
+</body>
+</html>

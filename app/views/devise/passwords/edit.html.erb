@@ -1,0 +1,68 @@
+<div id="box" class="set-password-box">
+  <h1>Rolling Themes</h1>
+
+  <div id="block-login" class="block">
+    <h2>Change your password</h2>
+
+    <div class="content login">
+      <div class="flash">
+        <% flash.each do |type, message| -%>
+          <div class="message <%= type %>">
+            <p><%= message %></p>
+          </div>
+        <% end %>
+      </div>
+
+      <%= form_for(resource, :as => resource_name, :url => password_path(resource_name), :html => { :method => :put, :class => 'form login' }) do |f| %>
+        <div class="flash">
+          <% unless resource.errors.blank? %>
+            <div class="message error">
+              <ul class="user-form-error">
+                <% resource.errors.full_messages.each do |error| %>
+                  <li><%= error %></li>
+                <% end %>
+              </ul>
+            </div>
+          <% end %>
+        </div>
+
+        <div class="group wat-cf">
+          <div class="left">
+            <%= f.label :password, 'New password', :class => 'label right' %>
+          </div>
+          <div class="right">
+            <%= f.password_field :password, :class => 'text_field' %>
+          </div>
+        </div>
+        <div class="group wat-cf">
+          <div class="left">
+            <%= f.label :password_confirmation, 'Confirm new password', :class => 'label right' %>
+          </div>
+          <div class="right">
+            <%= f.password_field :password_confirmation, :class => 'text_field' %>
+          </div>
+        </div>
+
+        <div class="group navform wat-cf">
+          <%= f.hidden_field :reset_password_token %>
+          <div class="right">
+            <button type="submit" class="button">
+              <%= image_tag "key.png", :alt => '-' %> Change my password
+            </button>
+          </div>
+        </div>
+
+        <div class="group navform wat-cf">
+          <div class="right">
+            <%= render "links" %>
+          </div>
+        <% end %>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+<%= content_for :stylesheet do %>
+  <%= stylesheet_link_tag "web_app_theme" %>
+<% end %>

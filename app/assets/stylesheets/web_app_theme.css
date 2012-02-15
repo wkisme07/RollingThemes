@@ -1,0 +1,131 @@
+/*
+ * This css will include all web-app-theme css you need
+ *
+ *= require web-app-theme/base
+ *= require web-app-theme/themes/default/style.css
+ *= require_self
+ */
+
+/* Write here your css for overriding the theme's rules */
+
+.admin-site #main{
+  width: 100%;
+}
+.admin-site ul.form-error{
+  color: #ecafaf;
+  list-style: none;
+  padding: 0;
+  margin: 0 0 5px 0;
+}
+.admin-site .no-data{
+  text-align: center;
+}
+.admin-site div.no-data{
+  border-bottom: 1px solid #ccc;
+  padding: 0 5px 9px;
+}
+.admin-site .link-button-container{
+  padding-bottom: 10px;
+}
+.link-button{
+  background: url("web-app-theme/themes/default/images/button-background.png") repeat scroll center top #EDEEED;
+  border: 1px solid #C3C4BA;
+  border-radius: 3px 3px 3px 3px;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+  font-family: "MuseoSans500",helvetica,arial,sans-serif;
+  font-weight: normal;
+  float: left;
+  line-height: 17px;
+  padding: 5px 10px 5px 7px;
+  text-decoration: none;
+}
+.admin-site h3.facebox-title{
+  background: none repeat scroll 0 0 #DDDDDD;
+  border-radius: 5px 5px 0 0;
+  margin: -10px -10px 10px;
+  padding: 7px;
+}
+#facebox .close{
+  background-color: inherit;
+}
+.admin-site .table th.last{
+  width: 125px;
+}
+.admin-site .pagination em{
+  margin-right: 5px;
+  min-width: 15px;
+  padding: 6px;
+  text-align: center;
+}
+.admin-site .pagination em.current{
+  background: none repeat scroll 0 0 #261F1F;
+  border: 1px solid #261F1F;
+  color: white;
+}
+.admin-site h4.field-group-title{
+  background: url("web-app-theme/themes/default/images/boxbar-background.png") repeat scroll center top #E0E0E0;
+  padding: 5px;
+}
+.admin-site .selectbox{
+  min-width: 250px;
+}
+.admin-site .field-group{
+  margin-top: 10px;
+}
+.admin-site .field-group .group{
+  padding: 0px 10px
+}
+.admin-site .form .short-text-field .text_field{
+  display: block;
+  width: 25%;
+}
+div.left{
+  float: left;
+}
+div.right{
+  float: right;
+}
+.admin-site .search-form{
+  text-align: right;
+}
+.admin-site .search-form .form .text_field{
+  height: 22px;
+  width: 200px;
+}
+.admin-site .search-form .link-button{
+  float: none;
+}
+.admin-site ul.tagit{
+  border: 1px solid #DDDDDD;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1) inset;
+  width: 98%;
+}
+.login-remember-me{
+  margin-top: 10px;
+}
+.login-forgot{
+  float: right;
+  margin-top: 8px;
+}
+.flash .alert {
+  background: url("warning.png") no-repeat scroll 10px center #F9C006;
+  border: 1px solid #BB9004;
+}
+#user-navigation ul li a.email-link{
+  text-decoration: underline;
+}
+#box.set-password-box{
+  width: 595px;
+}
+.set-password-box .login div.left{
+  width: 28%;
+}
+.set-password-box .login div.right{
+  width: 70%;
+}
+.user-form-error, .set-password-error{
+  margin: 5px 0;
+}
+.admin-site .table tr.inactive{
+  color: #ccc;
+}

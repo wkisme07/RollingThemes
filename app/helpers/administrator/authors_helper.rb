@@ -1,0 +1,2 @@
+module Administrator::AuthorsHelper
+end
