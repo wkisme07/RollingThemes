@@ -25,3 +25,4 @@
 
 # Ignore test
 /test
+/nbproject/private/

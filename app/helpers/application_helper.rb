@@ -13,4 +13,9 @@ module ApplicationHelper
     html
   end
 
+  # @author Wawan Kurniawan <wawan@kuyainside.com>
+  # Remove HTML tag or just get the text
+  def just_text(body)
+    body.gsub(/<(.*?)>/, '')
+  end
 end

@@ -8,6 +8,7 @@
 //= require jquery_ujs
 //= require jquery-ui
 //= require jquery.facebox
+//= require ckeditor/ckeditor
 // require_tree .
 
 $(document).ready(function(){
@@ -23,6 +24,14 @@ $(document).ready(function(){
   $('.flash').click(function(){
     $(this).slideUp();
   });
+
+  // ck editor ajax request
+  $('form[data-remote]').bind("ajax:before", function(){
+    for (instance in CKEDITOR.instances){
+      CKEDITOR.instances[instance].updateElement();
+    }
+  });
+
 });
 
 // DONT CLOSE FACEBOX WHEN DOCUMENT IS CLICKED
@@ -36,3 +45,17 @@ $(document).bind('loading.facebox', function(){
     }
   })
 });
+
+
+CKEDITOR.config.toolbar_AdminSimple =
+[
+    { name: 'document',    items : [ 'Source','-','Save','Preview' ] },
+    { name: 'clipboard',   items : [ 'Cut','Copy','Paste','-','Undo','Redo' ] },
+    { name: 'paragraph',   items : [ 'NumberedList','BulletedList','-','JustifyLeft','JustifyCenter','JustifyRight', 'SelectAll' ] },
+    { name: 'links',       items : [ 'Link','Unlink','Anchor','Image','Smiley' ] },
+    '/',
+    { name: 'basicstyles', items : [ 'Bold','Italic','Underline','Strike','Subscript','Superscript','-','Styles','Format','Font','FontSize' ] },
+    { name: 'colors',      items : [ 'TextColor','BGColor' ] }
+];
+
+CKEDITOR.config.toolbar = 'AdminSimple';

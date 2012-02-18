@@ -5,19 +5,26 @@ gem 'rails', '3.1.3'
 # Bundle edge Rails instead:
 # gem 'rails',     :git => 'git://github.com/rails/rails.git'
 
-# FOR PRODUCTION
-# gem 'thin'
-gem 'mongrel', '>= 1.2.0.pre2'
+group :production do
+  # HEROKU
+  gem 'pg'
+  gem 'thin'
+end
 
-# HEROKU
-gem 'pg'
-# gem 'mysql2'
+group :development do
+  gem 'mysql2'
+  gem 'mongrel', '>= 1.2.0.pre2'
+  # To use debugger
+  gem 'ruby-debug19', :require => 'ruby-debug'
+end
+
 
 gem 'devise'
 gem 'devise_invitable'
 gem 'cancan'
 gem 'carrierwave'
 gem "mini_magick"
+gem "rmagick"
 gem "ckeditor", "3.7.0.rc2"
 gem 'will_paginate'
 
@@ -41,11 +48,6 @@ gem 'facebox-rails'
 
 # Deploy with Capistrano
 # gem 'capistrano'
-
-group :development do
-  # To use debugger
-  gem 'ruby-debug19', :require => 'ruby-debug'
-end
 
 group :test do
   # Pretty printed test output

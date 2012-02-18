@@ -11,7 +11,7 @@ class Administrator::ApplicationController < ApplicationController
   # Remove selected data
   def destroy_selection
     object = params[:object].constantize
-    flash[:notice] = 'Data removed' if !params[:selection].blank? && object.delete_all(["id IN (?)", params[:selection].join(', ')])
+    flash[:notice] = 'Data removed' if !params[:selection].blank? && object.delete_all(["id IN (?)", params[:selection]])
 
     redirect_to params[:redirect_url] || administrator_root_path
   end

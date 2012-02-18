@@ -25,7 +25,7 @@ class Administrator::CategoriesController < Administrator::ApplicationController
         format.js{ render 'administrator/application/facebox-redirect' }
       else
         @template = '/administrator/categories/_form.html'
-        format.html{ render :action => :new }
+        format.html{ render :partial => 'form' }
         format.js{ render 'administrator/application/facebox-reprocess'}
       end
     end
@@ -47,7 +47,7 @@ class Administrator::CategoriesController < Administrator::ApplicationController
         format.js{ render 'administrator/application/facebox-redirect' }
       else
         @template = 'administrator/categories/_form.html'
-        format.html{ render :action => :edit }
+        format.html{ render :partial => 'form' }
         format.js{ render 'administrator/application/facebox-reprocess' }
       end
     end
