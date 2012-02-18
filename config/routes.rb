@@ -1,4 +1,6 @@
 Rollingthemes::Application.routes.draw do
+  mount Ckeditor::Engine => '/ckeditor'
+
   devise_for :users
 
   match '/administrator' => 'Administrator::Application#index', :as => 'administrator_root'
