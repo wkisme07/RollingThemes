@@ -1,0 +1,32 @@
+<div class="content">
+  <h2>Edit Post</h2>
+
+  <div class="inner">
+    <%= form_for @post_version, :url => administrator_post_path(@post_version), :html => {:multipart => true, :class => 'form', :method => :put} do |f| %>
+      <%= error_messages(@post_version).html_safe %>
+
+      <div class="group">
+        <%= f.label :title, :class => 'label' %>
+        <%= f.text_field :title, :class => 'text_field' %>
+      </div>
+      <div class="group">
+        <%= f.label :author, :class => 'label' %>
+        <%= f.select :author_id, options_for_select(all_authors_options, @post_version.author_id), :include_blank => 'Choose Here', :class => 'selectbox' %>
+      </div>
+      <div class="group">
+        <%= f.label :content, :class => 'label' %>
+        <%= f.cktext_area :content, :toolbar => 'Full', :height => 400 %>
+      </div>
+
+      <div class="group navform wat-cf">
+        <%= f.hidden_field :post_id %>
+        <button type="submit" class="button" name="submit" value="save">
+          <%= image_tag "tick.png", :alt => "+" %> Save
+        </button>
+        <button type="submit" class="button" name="submit" value="save-n-publish">
+          <%= image_tag "tick.png", :alt => "+" %> Save and Publish
+        </button>
+      </div>
+    <% end %>
+  </div>
+</div>

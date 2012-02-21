@@ -11,6 +11,10 @@ Rollingthemes::Application.routes.draw do
     resources :tags
     resources :authors
     resources :posts do
+      collection do
+        get :publish
+      end
+
       resources :comments
     end
     resources :users do
