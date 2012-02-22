@@ -25,7 +25,7 @@ gem 'cancan'
 gem 'carrierwave'
 gem "mini_magick"
 gem "rmagick"
-gem "ckeditor", "3.7.0.rc2"
+gem "ckeditor", :git => "git://github.com/andreaslyngstad/ckeditor.git"
 gem 'will_paginate'
 
 # Gems used only for assets and not required
