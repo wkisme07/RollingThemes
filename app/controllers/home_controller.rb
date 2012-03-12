@@ -1,4 +1,5 @@
 class HomeController < ApplicationController
+  layout 'front-end'
   before_filter :get_post, :only => [:show, :send_comment]
 
   # @author Wawan Kurniawan <wawan@kuyainside.com>

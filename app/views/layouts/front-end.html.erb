@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Rolling Themes</title>
+  <%= stylesheet_link_tag    "front-end" %>
+  <%= javascript_include_tag "application" %>
+  <%= csrf_meta_tags %>
+  <%= yield :stylesheet %>
+</head>
+<body>
+
+  <%#= render :template => 'shared/top-menu.html' %>
+  <%= render :template => 'shared/header.html' %>
+
+  <div id="content">
+    <div class="container">
+      <div class="flash">
+        <% flash.each do |type, message| -%>
+          <div class="message <%= type %>">
+            <p><%= message.html_safe %></p>
+          </div>
+        <% end -%>
+      </div>
+
+      <%= yield %>
+
+      <%= render :template => 'shared/right-content.html' %>
+      <%= render :template => 'shared/tutorials.html' %>
+    </div>
+  </div>
+  <div class="clear"></div>
+
+  <%= render :template => 'shared/footer.html' %>
+
+  <%= yield :javascript %>
+</body>
+</html>
