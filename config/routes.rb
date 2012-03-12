@@ -5,6 +5,7 @@ Rollingthemes::Application.routes.draw do
 
   match '/administrator' => 'Administrator::Application#index', :as => 'administrator_root'
   match '/administrator/destroy_selection' => 'Administrator::Application#destroy_selection', :as => :administrator_destroy_selection
+  match '/administrator/posts/:post_id/comments/:id/approve' => 'Administrator::Comments#approve', :as => :administrator_approve_comment
 
   namespace :administrator do
     resources :categories
@@ -15,13 +16,32 @@ Rollingthemes::Application.routes.draw do
         get :publish
       end
 
-      resources :comments
+      resources :comments do
+        collection do
+          get :approve
+        end
+      end
+      resources :post_versions
     end
     resources :users do
       collection do
         get    :account_setting
         put    :update_account
       end
+    end
+  end
+
+  # FRONT-END ROUTES #
+  match "/posts/detail/:id" => 'Home#show', :as => :post_detail
+  match "/authors/:id" => 'Home#author', :as => :author_page
+  match "/posts/:id/comments" => 'Home#send_comment', :as => :send_comment
+  match "/posts/remove_comment/:id" => 'Home#remove_comment', :as => :remove_comment
+
+  resources :home, :only => [:index, :show] do
+    collection do
+      get :author
+      post :send_comment
+      delete :remove_comment
     end
   end
 

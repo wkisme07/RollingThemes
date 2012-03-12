@@ -5,5 +5,41 @@
     <p>
       Welcome to Administrator Site
     </p>
+
+    <div class="post-comment-container">
+      <% unless @comments.blank? %>
+        <h4>Comments</h4>
+
+        <ul class="list">
+          <% post_id = 0 %>
+          <% @comments.each do |comment| %>
+            <% if post_id != comment.post_id %>
+              <% post_id = comment.post_id %>
+              <li><%= link_to comment.post.title, administrator_post_path(comment.post) %></li>
+            <% end %>
+
+            <li class="post-comment">
+              <div class="left">
+                <% link = comment.url.blank? ? '#comment-list' : comment.url %>
+                <%= link_to comment.name, link %>
+              </div>
+              <div class="item">
+                <%= comment.content.html_safe %>
+                <p class="comment-time">
+                  <%= comment.created_at.strftime("%Y-%m-%d %H:%m:%S") %>
+
+                  <%= link_to('approve', administrator_approve_comment_path(comment.post, comment), :class => 'green') unless comment.approved %>
+                  <%= link_to 'remove', administrator_post_comment_path(comment.post, comment), :method => :delete %>
+                </p>
+              </div>
+            </li>
+          <% end unless @comments.blank? %>
+          <% if @comments.blank? %>
+          <li class="no-data">No Comments yet</li>
+          <% end %>
+        </ul>
+      <% end %>
+    </div>
+
   </div>
 </div>

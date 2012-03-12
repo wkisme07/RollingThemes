@@ -8,6 +8,8 @@ class Post < ActiveRecord::Base
   before_create :set_version
   after_create :create_version
 
+  scope :all_published, where("published = ?", true)
+
   # @author Wawan Kurniawan <wawan@kuyainside.com>
   # Search post by title or content
   def self.search(search)
@@ -16,6 +18,12 @@ class Post < ActiveRecord::Base
     else
       scoped
     end
+  end
+
+  # @author Wawan Kurniawan <wawan@kuyainside.com>
+  # All approved comments
+  def approved_comments
+    comments.where("approved = ?", true)
   end
 
   # @author Wawan Kurniawan <wawan@kuyainside.com>
@@ -51,5 +59,11 @@ class Post < ActiveRecord::Base
   # Publish post as the vnumber given
   def publish(pv)
     update_attributes(:version => pv.version, :title => pv.title, :author_id => pv.author_id, :content => pv.content, :published => true)
+  end
+
+  # @author Wawan Kurniawan <wawan@kuyainside.com>
+  # Post status
+  def status
+    published ? 'published' : 'draft'
   end
 end

@@ -23,6 +23,7 @@ gem 'devise'
 gem 'devise_invitable'
 gem 'cancan'
 gem 'carrierwave'
+gem 'fog'
 gem "mini_magick"
 gem "rmagick"
 gem "ckeditor", "3.7.0.rc2"

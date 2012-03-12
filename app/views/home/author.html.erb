@@ -1,0 +1,111 @@
+<div class="sidebar_left">
+  <div class="post author_page">
+    <p class="thumb_img">
+      <% author_img = @author.avatar ? @author.avatar : 'front-end/dummy3.jpg'  %>
+      <% image_tag author_img, :alt => 'avatar' %>
+    </p>
+    <h2 class="title"><%= @author.name %></h2>
+    <p class="large">
+      <%= @author.profile.html_safe %>
+    </p>
+    <p class="info">
+      <a href="">Visit Website</a> | <a href="">Follow on Twitter</a>
+    </p>
+    <div class="clear"></div>
+  </div>
+
+  <% @author.posts.each do |post| %>
+    <div class="post">
+      <p class="comment_tag"><span><%= post.approved_comments.size %></span></p>
+      <p class="thumb_img">
+        <span class="border_img2">&nbsp</span>
+        <% author_img = @author.avatar ? @author.avatar : 'front-end/dummy3.jpg'  %>
+        <% image_tag author_img, :alt => 'avatar' %>
+      </p>
+      <h2 class="title"><%= link_to post.title, post_detail_path(post) %></h2>
+      <div class="clear"></div>
+
+      <p class="info">
+        <%= posting_date(post.created_at) %> |
+        Posted by <%= link_to @author.name, '#' %> |
+        <span class="tags"><a href="">Technology</a></span>
+      </p>
+
+      <div class="desc"><%= post.content.html_safe %></div>
+      <div class="clear"></div>
+    </div>
+  <% end %>
+
+  <div class="post">
+    <p class="comment_tag"><span>78</span></p>
+    <p class="thumb_img">
+      <span class="border_img2">&nbsp</span>
+      <img src="/assets/front-end/dummy3.jpg" />
+    </p>
+    <h2 class="title">
+      Attention to detail and consistency across our web site and mobile applications was awesome
+    </h2>
+    <div class="clear"></div>
+    <p class="info">
+      12 December 2011 | Posted by <a href="">Stephen</a> | <span class="tags"><a href="">Technology</a></span>
+    </p>
+    <div class="desc">
+      <p class="large">
+        Harry stunned me with his eye catching and imaginary design. His attention to detail and consistency across our web site and mobile applications was awesome. Harry was adaptable and communicative a pleasure to work with.
+      </p>
+
+      <p>
+        Harry stunned me with his eye catching and imaginary design. His attention to detail and consistency across our web site and mobile applications was awesome. Harry was adaptable and communicative a pleasure to work with. Hopefully I will be working with Harry again very soon. Harry stunned me with his eye catching and imaginary design. His attention to detail and consistency across our web site and mobile applications was awesome. Harry was adaptable and communicative a pleasure to work with. Hopefully I will be working with Harry again very soon.
+      </p>
+    </div>
+    <div class="clear"></div>
+  </div>
+  <div class="post">
+    <p class="comment_tag"><span>120</span></p>
+    <p class="thumb_img">
+      <span class="border_img2">&nbsp</span>
+      <img src="/assets/front-end/dummy4.jpg" />
+    </p>
+    <h2 class="title">
+      Attention to detail and consistency across our web site and mobile applications was awesome
+    </h2>
+    <div class="clear"></div>
+    <p class="info">
+      12 December 2011 | Posted by <a href="">Stephen</a> | <span class="tags"><a href="">Technology</a></span>
+    </p>
+    <div class="desc">
+      <p class="large">
+        Harry stunned me with his eye catching and imaginary design. His attention to detail and consistency across our web site and mobile applications was awesome. Harry was adaptable and communicative a pleasure to work with.
+      </p>
+
+      <p>
+        Harry stunned me with his eye catching and imaginary design. His attention to detail and consistency across our web site and mobile applications was awesome. Harry was adaptable and communicative a pleasure to work with. Hopefully I will be working with Harry again very soon. Harry stunned me with his eye catching and imaginary design. His attention to detail and consistency across our web site and mobile applications was awesome. Harry was adaptable and communicative a pleasure to work with. Hopefully I will be working with Harry again very soon.
+      </p>
+    </div>
+    <div class="clear"></div>
+  </div>
+  <div class="post">
+    <p class="comment_tag"><span>3</span></p>
+    <p class="thumb_img">
+      <span class="border_img2">&nbsp</span>
+      <img src="/assets/front-end/dummy5.jpg" />
+    </p>
+    <h2 class="title">
+      Attention to detail and consistency across our web site and mobile applications was awesome
+    </h2>
+    <div class="clear"></div>
+    <p class="info">
+      12 December 2011 | Posted by <a href="">Stephen</a> | <span class="tags"><a href="">Technology</a></span>
+    </p>
+    <div class="desc">
+      <p class="large">
+        Harry stunned me with his eye catching and imaginary design. His attention to detail and consistency across our web site and mobile applications was awesome. Harry was adaptable and communicative a pleasure to work with.
+      </p>
+
+      <p>
+        Harry stunned me with his eye catching and imaginary design. His attention to detail and consistency across our web site and mobile applications was awesome. Harry was adaptable and communicative a pleasure to work with. Hopefully I will be working with Harry again very soon. Harry stunned me with his eye catching and imaginary design. His attention to detail and consistency across our web site and mobile applications was awesome. Harry was adaptable and communicative a pleasure to work with. Hopefully I will be working with Harry again very soon.
+      </p>
+    </div>
+    <div class="clear"></div>
+  </div>
+</div>

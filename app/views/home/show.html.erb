@@ -1,0 +1,76 @@
+<div class="sidebar_left">
+  <div class="post detail_post">
+    <p class="comment_tag"><span><%= @post.approved_comments.size %></span></p>
+    <p class="thumb_img">
+      <span class="border_img2">&nbsp</span>
+      <% author_img = @post.author.avatar ? @post.author.avatar : 'front-end/dummy3.jpg'  %>
+      <% image_tag author_img, :alt => 'avatar' %>
+    </p>
+    <h2 class="title"><%= link_to @post.title, '#' %></h2>
+    <div class="clear"></div>
+
+    <p class="info">
+      <%= posting_date(@post.created_at) %> |
+      Posted by <%= link_to @post.author.name, author_page_path(@post.author) %> |
+      <span class="tags"><a href="">Technology</a></span>
+    </p>
+
+    <div class="desc"><%= @post.content.html_safe %></div>
+    <div class="clear"></div>
+  </div>
+
+  <div class="post author_page">
+    <p class="thumb_img">
+      <% author_img = @post.author.avatar ? @post.author.avatar : 'front-end/dummy3.jpg'  %>
+      <% image_tag author_img, :alt => 'avatar' %>
+    </p>
+    <h2 class="title"><%= link_to @post.author.name, author_page_path(@post.author) %></h2>
+    <p class="large">
+      <%= @post.author.profile.html_safe %>
+    </p>
+    <p class="info">
+      <a href="">Visit Website</a> | <a href="">Follow on Twitter</a>
+    </p>
+    <div class="clear"></div>
+  </div>
+
+  <div class="post comments">
+    <h2 class="title">Comments</h2>
+    <% @post.approved_comments.each do |comment| %>
+      <p class="info comment-<%= comment.id %>">
+        <%= comment_time(comment.created_at) %> <%= "| #{link_to('remove', remove_comment_path(comment))}".html_safe if current_user.role?('Admin') %>
+      </p>
+
+      <%= comment.content.html_safe %>
+      <div class="clear"></div>
+    <% end %>
+
+    <div class="comment-form">
+      <%= form_for @comment, :url => send_comment_path(@post), :html => {:class => 'form'} do |f| %>
+        <%= error_messages(@comment).html_safe %>
+
+        <div class="group">
+          <%= f.label "name*", :class => 'comment-label' %>
+          <%= f.text_field :name, :class => 'text_field' %>
+        </div>
+        <div class="group">
+          <%= f.label "email*", :class => 'comment-label' %>
+          <%= f.email_field :email, :class => 'text_field' %>
+        </div>
+        <div class="group">
+          <%= f.label :url, :class => 'comment-label' %>
+          <%= f.text_field :url, :class => 'text_field' %>
+        </div>
+        <div class="group">
+          <%= f.label "content*", :class => 'comment-label' %>
+          <%= f.cktext_area :content, :toolbar => 'Basic', :height => 180 %>
+        </div>
+
+        <button type="submit" class="button">
+          <%= image_tag "tick.png", :alt => '+' %> Send
+        </button>
+        <div class="clear"></div>
+      <% end %>
+    </div>
+  </div>
+</div>

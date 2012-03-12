@@ -1,0 +1,47 @@
+<div class="content">
+  <h2>Post Versions</h2>
+
+  <div class="inner">
+    <table class="table">
+      <tr>
+        <th>Title</th>
+        <th>Content</th>
+        <th>Author</th>
+        <th>Version</th>
+        <th>Status</th>
+        <th class="last">&nbsp;</th>
+      </tr>
+      <% @versions.each do |v| %>
+        <tr class="<%= cycle('odd', 'even') %>">
+          <td><%= v.title %></td>
+          <td><%= truncate(just_text(v.content), :length => 120) %></td>
+          <td><%= v.try(:author).try(:name) %></td>
+          <td align="center"><%= v.version %></td>
+          <td class="<%= v.status %>">
+            <%= v.status.titleize %>
+          </td>
+          <td class="last">
+            <% if v.status == 'draft' %>
+              <%= link_to 'publish', publish_administrator_posts_path(:id => v.id) %> |
+            <% end %>
+            <%= link_to 'show', administrator_post_post_version_path(@post, v) %>
+          </td>
+        </tr>
+      <% end unless @versions.blank? %>
+      <% if @versions.blank? %>
+        <tr class="odd">
+          <td colspan="6" class="no-data">No Data</td>
+        </tr>
+      <% end %>
+    </table>
+    <div class="actions-bar wat-cf">
+      <div class="actions">
+        <%= link_to "Post lists", administrator_posts_path, :class => 'link-button' %>
+      </div>
+      <div class="pagination">
+        <%= will_paginate @versions %>
+      </div>
+    </div>
+
+  </div>
+</div>

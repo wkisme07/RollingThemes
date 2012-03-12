@@ -16,28 +16,27 @@
           <th>Title</th>
           <th>Content</th>
           <th>Author</th>
-          <th>Version</th>
           <th>Status</th>
+          <th class="center">Published Version</th>
+          <th class="center">Last Version</th>
           <th class="last">&nbsp;</th>
         </tr>
         <% @posts.each do |post| %>
-          <% lv = post.last_version %>
           <tr class="<%= cycle('odd', 'even') %>">
             <td>
               <%= check_box_tag 'selection[]', post.id, false, :id => "selection-#{post.id}", :class => 'checkbox' %>
             </td>
-            <td><%= lv.title %></td>
-            <td><%= truncate(just_text(lv.content), :length => 120) %></td>
-            <td><%= lv.try(:author).try(:name) %></td>
-            <td align="center"><%= lv.version %></td>
-            <td class="<%= lv.status %>">
-              <%= lv.status.titleize %>
+            <td><%= post.title %></td>
+            <td><%= truncate(just_text(post.content), :length => 60) %></td>
+            <td><%= post.try(:author).try(:name) %></td>
+            <td class="<%= post.status %>">
+              <%= post.status.titleize %>
             </td>
+            <td align="center"><%= post.version %></td>
+            <td align="center"><%= link_to post.last_version.version, administrator_post_post_versions_path(post) %></td>
             <td class="last">
-              <% if lv.status == 'draft' %>
-                <%= link_to 'publish', publish_administrator_posts_path(:id => lv.id) %> |
-              <% end %>
-              <%= link_to 'edit', edit_administrator_post_path(lv) %> |
+              <%= link_to 'show', administrator_post_path(post) %> |
+              <%= link_to 'edit', edit_administrator_post_path(post.last_version) %> |
               <%= link_to 'destroy', administrator_post_path(post), :method => :delete, :confirm => "Are you sure you want to delete this data?" %>
             </td>
           </tr>
@@ -63,11 +62,3 @@
     <% end %>
   </div>
 </div>
-
-<%= content_for :stylesheet do %>
-<style type="text/css">
-  #facebox .content{
-    width: 650px;
-  }
-</style>
-<% end %>

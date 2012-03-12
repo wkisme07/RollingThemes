@@ -132,3 +132,23 @@ div.right{
 .center, .table th.center{
   text-align: center;
 }
+
+.post-comment-container{
+  margin: 20px 0;
+}
+.comment-time, #main .block .content p.comment-time{
+  font-size: 11px;
+  color: #aaa;
+}
+.comment-time a{
+  padding: 0 0 0 6px;
+}
+.post-comment{
+  padding-left: 20px;
+}
+.red, a.red{
+  color: red;
+}
+.green, a.green{
+  color: #94d205;
+}

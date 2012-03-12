@@ -5,6 +5,7 @@ class Administrator::ApplicationController < ApplicationController
   # @author Wawan Kurniawan <wawan@kuyainside.com>
   # Administrator index page
   def index
+    @comments = Comment.where("approved = ?", false)
   end
 
   # @author Wawan Kurniawan <wawan@kuyainside.com>

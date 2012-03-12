@@ -1,94 +1,96 @@
-<div class="container">
-  <div id="header">
-    <div id="logo">
-      <%= link_to image_tag("maintenance/logo_rt.png"), administrator_root_path %>
-    </div><!--end logo-->
+<div class="sidebar_left">
+  <% @posts.each do |post| %>
+    <div class="post">
+      <p class="comment_tag"><span><%= post.approved_comments.size %></span></p>
+      <p class="thumb_img">
+        <span class="border_img2">&nbsp</span>
+        <% author_img = post.author.avatar ? post.author.avatar : 'front-end/dummy3.jpg'  %>
+        <% image_tag author_img, :alt => 'avatar' %>
+      </p>
+      <h2 class="title"><%= link_to post.title, post_detail_path(post) %></h2>
+      <div class="clear"></div>
 
-    <div id="contact_details">
-      <p><a href="mailto:support@rollingthemes.com">support@rollingthemes.com</a></p>
-    </div><!--end contact details-->
+      <p class="info">
+        <%= posting_date(post.created_at) %> |
+        Posted by <%= link_to post.author.name, author_page_path(post.author) %> |
+        <span class="tags"><a href="">Technology</a></span>
+      </p>
 
-  </div><!--end header-->
-  <div style="clear:both"></div>
+      <div class="desc"><%= post.content.html_safe %></div>
+      <div class="clear"></div>
+    </div>
+  <% end %>
 
-  <div id="main">
-    <div id="content">
+  <div class="post">
+    <p class="comment_tag"><span>78</span></p>
+    <p class="thumb_img">
+      <span class="border_img2">&nbsp</span>
+      <img src="/assets/front-end/dummy3.jpg" />
+    </p>
+    <h2 class="title">
+      Attention to detail and consistency across our web site and mobile applications was awesome
+    </h2>
+    <div class="clear"></div>
+    <p class="info">
+      12 December 2011 | Posted by <a href="">Stephen</a> | <span class="tags"><a href="">Technology</a></span>
+    </p>
+    <div class="desc">
+      <p class="large">
+        Harry stunned me with his eye catching and imaginary design. His attention to detail and consistency across our web site and mobile applications was awesome. Harry was adaptable and communicative a pleasure to work with.
+      </p>
 
-      <div class="text">
-        <h2>This website is under construction</h2>
-      </div><!--end text-->
+      <p>
+        Harry stunned me with his eye catching and imaginary design. His attention to detail and consistency across our web site and mobile applications was awesome. Harry was adaptable and communicative a pleasure to work with. Hopefully I will be working with Harry again very soon. Harry stunned me with his eye catching and imaginary design. His attention to detail and consistency across our web site and mobile applications was awesome. Harry was adaptable and communicative a pleasure to work with. Hopefully I will be working with Harry again very soon.
+      </p>
+    </div>
+    <div class="clear"></div>
+  </div>
+  <div class="post">
+    <p class="comment_tag"><span>120</span></p>
+    <p class="thumb_img">
+      <span class="border_img2">&nbsp</span>
+      <img src="/assets/front-end/dummy4.jpg" />
+    </p>
+    <h2 class="title">
+      Attention to detail and consistency across our web site and mobile applications was awesome
+    </h2>
+    <div class="clear"></div>
+    <p class="info">
+      12 December 2011 | Posted by <a href="">Stephen</a> | <span class="tags"><a href="">Technology</a></span>
+    </p>
+    <div class="desc">
+      <p class="large">
+        Harry stunned me with his eye catching and imaginary design. His attention to detail and consistency across our web site and mobile applications was awesome. Harry was adaptable and communicative a pleasure to work with.
+      </p>
 
-      <div class="counter">
-        <h3>Estimated Time Remaining Before Launch:</h3>
-        <div id="defaultCountdown"></div>
+      <p>
+        Harry stunned me with his eye catching and imaginary design. His attention to detail and consistency across our web site and mobile applications was awesome. Harry was adaptable and communicative a pleasure to work with. Hopefully I will be working with Harry again very soon. Harry stunned me with his eye catching and imaginary design. His attention to detail and consistency across our web site and mobile applications was awesome. Harry was adaptable and communicative a pleasure to work with. Hopefully I will be working with Harry again very soon.
+      </p>
+    </div>
+    <div class="clear"></div>
+  </div>
+  <div class="post">
+    <p class="comment_tag"><span>3</span></p>
+    <p class="thumb_img">
+      <span class="border_img2">&nbsp</span>
+      <img src="/assets/front-end/dummy5.jpg" />
+    </p>
+    <h2 class="title">
+      Attention to detail and consistency across our web site and mobile applications was awesome
+    </h2>
+    <div class="clear"></div>
+    <p class="info">
+      12 December 2011 | Posted by <a href="">Stephen</a> | <span class="tags"><a href="">Technology</a></span>
+    </p>
+    <div class="desc">
+      <p class="large">
+        Harry stunned me with his eye catching and imaginary design. His attention to detail and consistency across our web site and mobile applications was awesome. Harry was adaptable and communicative a pleasure to work with.
+      </p>
 
-      </div><!--end counter-->
-
-      <div class="details">
-        <!--slider prev button-->
-        <a class="prev" href="#"><img src="/assets/maintenance/prev.png" alt="" />
-        </a>
-
-        <div id="sliderwrap">
-          <div id="slidertext"><!-- The slider -->
-
-            <ul>
-              <li>
-                <h3>Type your email id to get the updates!</h3>
-                <form method="post" id="subscribeform" action="#">
-                  <div id="email_input">
-                    <input name="email" type="text" size="30" value="Enter Your E-mail" onfocus="if(this.value=='Enter Your E-mail'){this.value=''};" 	onblur="if(this.value==''){this.value='Enter Your E-mail'};" id="email" />
-                    <input type="submit" id="submit" value="SUBMIT" size="80" />
-                  </div>
-                </form>
-              </li><!-- Slider item -->
-
-              <li>
-                <h3>You may find us below:</h3>
-                <div class="social">
-                  <a href="http://twitter.com/rollingthemes" class="twitter">Follow Us on Twitter</a>
-                  <a href="#" class="yahoo">Follow Us on Yahoo</a>
-                  <a href="http://facebook.com/rollingthemes" class="facebook">Like Us on Facebook</a>
-                  <a href="#" class="stumbleupon">Stumble Us on Stumbleupon</a>
-                </div>
-              </li><!-- Slider item -->
-
-              <li>
-                <h3>Some words about us</h3>
-                <p>Rollingthemes is a product under <a href="http://kuyainside.com">Kuyainside Inc.</a> that concentrates on the web and internet.</p>
-
-
-              </li><!-- Slider item -->
-
-            </ul>
-
-          </div><!-- End of slidertext -->
-
-        </div><!-- End of sliderwrap -->
-
-        <!--slider next button-->
-        <a class="next" href="#"><img src="/assets/maintenance/next.png" alt=""/></a>
-
-
-      </div><!--end details-->
-    </div><!--end content-->
-    <p class="copyright">Copyright &copy; Rollingthemes 2012. All rights selected</p>
-  </div><!--end main-->
-
-</div><!--end class container-->
-
-<%= content_for :stylesheet do %>
-  <%= stylesheet_link_tag "maintenance/style.css" %>
-<% end %>
-
-<%= content_for :javascript do %>
-  <%= javascript_include_tag 'maintenance/jcarousellite1.0.1_min.js', 'maintenance/jquery.countdown.js' %>
-  <script type="text/javascript">
-    $(function () {
-      var austDay = new Date("December 10, 2012 02:15:00");
-      $('#defaultCountdown').countdown({until: austDay, layout: '{dn} {dl}, {hn} {hl}, {mn} {ml}, and {sn} {sl}'});
-      $('#year').text(austDay.getFullYear());
-    });
-  </script>
-<% end %>
-
+      <p>
+        Harry stunned me with his eye catching and imaginary design. His attention to detail and consistency across our web site and mobile applications was awesome. Harry was adaptable and communicative a pleasure to work with. Hopefully I will be working with Harry again very soon. Harry stunned me with his eye catching and imaginary design. His attention to detail and consistency across our web site and mobile applications was awesome. Harry was adaptable and communicative a pleasure to work with. Hopefully I will be working with Harry again very soon.
+      </p>
+    </div>
+    <div class="clear"></div>
+  </div>
+</div>

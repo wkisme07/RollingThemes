@@ -1,0 +1,20 @@
+<div class="content">
+  <h2 class="title"><%= @version.title %></h2>
+
+  <div class="inner">
+    <%= @version.content.html_safe %>
+
+    <p>
+      Author: <%= @version.author.name %>
+    </p>
+
+
+    <div class="actions-bar wat-cf">
+      <%= link_to 'Back', administrator_post_post_versions_path(@version.post), :class => 'link-button' %>
+
+      <% if @version.status == 'draft' %>
+        <%= link_to 'Publish', publish_administrator_posts_path(:id => @version.id), :class => 'link-button green' %>
+      <% end %>
+    </div>
+  </div>
+</div>

@@ -18,4 +18,16 @@ module ApplicationHelper
   def just_text(body)
     body.gsub(/<(.*?)>/, '')
   end
+
+  # @author Wawan Kurniawan <wawan@kuyainside.com>
+  # Formated date
+  def posting_date(pdate)
+    pdate.strftime("%d %B %Y")
+  end
+
+  # @author Wawan Kurniawan <wawan@kuyainside.com>
+  # Formated time
+  def comment_time(ctime)
+    ctime.strftime('%Y-%m-%d %H:%m:%S')
+  end
 end

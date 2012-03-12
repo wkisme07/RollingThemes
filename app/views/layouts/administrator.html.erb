@@ -43,7 +43,7 @@
       <div class="flash">
         <% flash.each do |type, message| -%>
           <div class="message <%= type %>">
-            <p><%= message %></p>
+            <p><%= message.html_safe %></p>
           </div>
         <% end -%>
       </div>

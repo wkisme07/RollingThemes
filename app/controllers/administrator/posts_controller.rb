@@ -1,21 +1,21 @@
 class Administrator::PostsController < Administrator::ApplicationController
-  load_resource :only => [:index, :new, :create, :destroy]
+  load_resource :only => [:index, :new, :create, :show, :destroy]
   authorize_resource
   before_filter :prepare_data, :only => [:edit, :update, :publish]
 
-  # @post Wawan Kurniawan <wawan@kuyainside.com>
+  # @author Wawan Kurniawan <wawan@kuyainside.com>
   # Post lists
   def index
     @posts = Post.search(params[:search]).paginate(:page => params[:page], :per_page => ITEM_PER_PAGE, :order => 'created_at DESC')
   end
 
-  # @post Wawan Kurniawan <wawan@kuyainside.com>
+  # @author Wawan Kurniawan <wawan@kuyainside.com>
   # New post
   def new
     @post = Post.new
   end
 
-  # @post Wawan Kurniawan <wawan@kuyainside.com>
+  # @author Wawan Kurniawan <wawan@kuyainside.com>
   # Save post
   def create
     @post = Post.new(params[:post].merge(:published => params[:submit] == 'save-n-publish'))
@@ -32,23 +32,30 @@ class Administrator::PostsController < Administrator::ApplicationController
     end
   end
 
-  # @post Wawan Kurniawan <wawan@kuyainside.com>
+  # @author Wawan Kurniawan <wawan@kuyainside.com>
+  # Post detail
+  def show
+    @comment = Comment.new
+  end
+
+  # @author Wawan Kurniawan <wawan@kuyainside.com>
   # Edit post
   def edit
   end
 
-  # @post Wawan Kurniawan <wawan@kuyainside.com>
+  # @author Wawan Kurniawan <wawan@kuyainside.com>
   # Update post
   def update
     @post_version.attributes = params[:post_version]
     respond_to do |format|
       unless @post_version.changed?
-        updated = @post_version.update_attributes(params[:post_version])
+        @post_version.update_attributes(params[:post_version])
       else
-        updated = PostVersion.create(params[:post_version].merge(:version => @post_version.version + 1))
+        PostVersion.create(params[:post_version].merge(:version => @post_version.version + 1))
       end
+      @post_version.post.publish(@post_version) if params[:submit] == 'save-n-publish'
 
-      if updated
+      if @post_version.valid?
         flash[:notice] = "Post updated"
         format.html{ redirect_to administrator_posts_path }
         format.js{ render 'administrator/application/facebox-redirect'}
@@ -61,7 +68,7 @@ class Administrator::PostsController < Administrator::ApplicationController
     end
   end
 
-  # @post Wawan Kurniawan <wawan@kuyainside.com>
+  # @author Wawan Kurniawan <wawan@kuyainside.com>
   # Remove post
   def destroy
     flash[:notice] = @post.destroy ? "Post removed" : "Remove post failed"
@@ -77,7 +84,7 @@ class Administrator::PostsController < Administrator::ApplicationController
 
   protected
 
-  # @post Wawan Kurniawan <wawan@kuyainside.com>
+  # @author Wawan Kurniawan <wawan@kuyainside.com>
   # Prepare variable
   def prepare_data
     @post_version = PostVersion.find_by_id params[:id]

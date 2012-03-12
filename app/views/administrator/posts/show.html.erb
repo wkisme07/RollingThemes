@@ -1,0 +1,56 @@
+<div class="content">
+  <h2 class="title"><%= @post.title %></h2>
+
+  <div class="inner">
+    <%= @post.content.html_safe %>
+
+    <p>
+      Author: <%= @post.author.name %>
+    </p>
+
+    <div class="post-comment-container">
+      <h4>Comments</h4>
+
+      <ul class="list">
+        <% @post.comments.each do |comment| %>
+          <li>
+            <div class="left">
+              <% link = comment.url.blank? ? '#comment-list' : comment.url %>
+              <%= link_to comment.name, link %>
+            </div>
+            <div class="item">
+              <%= comment.content.html_safe %>
+              <p class="comment-time">
+                <%= comment_time(comment.created_at) %>
+
+                <%= link_to('approve', administrator_approve_comment_path(@post, comment), :class => 'green') unless comment.approved %>
+                <%= link_to 'remove', administrator_post_comment_path(@post, comment), :method => :delete %>
+              </p>
+            </div>
+          </li>
+        <% end unless @post.comments.blank? %>
+        <% if @post.comments.blank? %>
+        <li class="no-data">No Comments yet</li>
+        <% end %>
+      </ul>
+
+      <div class="comment-form">
+        <%= form_for ['administrator', @post, @comment], :html => {:class => 'form'} do |f| %>
+          <%= error_messages(@comment).html_safe %>
+
+          <div class="group">
+            <%= f.label :new_comment, :class => 'label' %>
+            <%= f.cktext_area :content, :toolbar => 'Basic', :height => 180, :width => '60%' %>
+          </div>
+
+          <button type="submit" class="button">
+            <%= image_tag "tick.png", :alt => '+' %> Send
+          </button>
+          <%= link_to "Back", administrator_posts_path, :class => 'link-button' %>
+          <div class="clear"></div>
+        <% end %>
+      </div>
+
+    </div>
+  </div>
+</div>
